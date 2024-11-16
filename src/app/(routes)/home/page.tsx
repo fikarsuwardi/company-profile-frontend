@@ -1,4 +1,5 @@
 import axios from 'axios';
+import type { Metadata } from 'next';
 
 // Define the Service interface
 interface Service {
@@ -33,6 +34,30 @@ interface CompanyInformation {
   updatedAt: string;
   publishedAt: string;
 }
+
+export const metadata: Metadata = {
+  title: 'Home',
+  description: 'Check out the amazing projects we’ve worked on.',
+  openGraph: {
+    title: 'Projects - Your Website Name',
+    description: 'Check out the amazing projects we’ve worked on.',
+    url: 'https://yourwebsite.com/projects',
+    images: [
+      {
+        url: '/images/projects-og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Projects Open Graph Image',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Projects - Your Website Name',
+    description: 'Check out the amazing projects we’ve worked on.',
+    images: ['/images/projects-twitter-image.jpg'],
+  },
+};
 
 export default async function Home() {
   const strapiUrl = 'http://localhost:1337';

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import type { Metadata } from 'next';
 
 // Define the Project interface
 interface Project {
@@ -18,6 +19,30 @@ interface Project {
   publishedAt: string;
 }
 
+export const metadata: Metadata = {
+  title: 'Projects',
+  description: 'Check out the amazing projects we’ve worked on.',
+  openGraph: {
+    title: 'Projects - Your Website Name',
+    description: 'Check out the amazing projects we’ve worked on.',
+    url: 'https://yourwebsite.com/projects',
+    images: [
+      {
+        url: '/images/projects-og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Projects Open Graph Image',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Projects - Your Website Name',
+    description: 'Check out the amazing projects we’ve worked on.',
+    images: ['/images/projects-twitter-image.jpg'],
+  },
+};
+
 export default async function ProjectsPage() {
   const strapiUrl = 'http://localhost:1337';
 
@@ -28,7 +53,7 @@ export default async function ProjectsPage() {
   const projects: Project[] = projectsRes.data?.data || [];
 
   return (
-    <div>
+    <>
       <h1 className="text-3xl font-bold mb-4">Our Projects</h1>
       <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {projects.length > 0 ? (
@@ -55,6 +80,6 @@ export default async function ProjectsPage() {
           <p>No projects available at this time.</p>
         )}
       </ul>
-    </div>
+    </>
   );
 }

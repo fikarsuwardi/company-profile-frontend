@@ -1,3 +1,7 @@
 {
-  "extends": ["next/core-web-vitals", "next/typescript"]
+  "extends": ["next/core-web-vitals", "next/typescript"],
+  "rules": {
+    "no-unused-vars": "off", // Disable the core ESLint rule
+    "@typescript-eslint/no-unused-vars": "warn" // Use the TypeScript version as a warning
+  }
 }
